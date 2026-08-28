@@ -1,0 +1,1285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KubeView Final Project Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #5f6368;
+      --rule: #dadce0;
+      --heading: #17365d;
+      --table-head: #eaf1f8;
+      --code-bg: #f6f8fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #eef1f4;
+      color: var(--ink);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      line-height: 1.5;
+    }
+
+    article {
+      width: min(8.27in, calc(100% - 32px));
+      margin: 28px auto;
+      padding: 1in;
+      background: #fff;
+      box-shadow: 0 2px 16px rgb(32 33 36 / 12%);
+    }
+
+    h1, h2, h3 {
+      color: var(--heading);
+      font-weight: 700;
+      line-height: 1.25;
+      page-break-after: avoid;
+    }
+
+    h1 {
+      margin: 30pt 0 12pt;
+      padding-bottom: 6pt;
+      border-bottom: 1.5pt solid var(--heading);
+      font-size: 14pt;
+    }
+
+    h1:first-child {
+      margin-top: 0;
+      padding: 0 0 14pt;
+      border-bottom: 2pt solid var(--heading);
+      text-align: center;
+      font-size: 18pt;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 22pt 0 8pt;
+      font-size: 14pt;
+    }
+
+    h3 {
+      margin: 16pt 0 6pt;
+      font-size: 12pt;
+    }
+
+    p { margin: 0 0 9pt; }
+
+    ul, ol {
+      margin: 4pt 0 10pt;
+      padding-left: 24pt;
+    }
+
+    li { margin: 0 0 3pt; }
+
+    table {
+      width: 100%;
+      margin: 10pt 0 16pt;
+      border-collapse: collapse;
+      page-break-inside: avoid;
+      font-size: 10.5pt;
+    }
+
+    th, td {
+      padding: 6pt 7pt;
+      border: 1px solid #aeb7c2;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--table-head);
+      color: #102a43;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td { background: #fafbfc; }
+
+    blockquote {
+      margin: 10pt 0 14pt;
+      padding: 8pt 12pt;
+      border-left: 4px solid #4f81bd;
+      background: #f3f7fb;
+      color: #26384a;
+    }
+
+    blockquote p:last-child { margin-bottom: 0; }
+
+    code {
+      border-radius: 3px;
+      background: var(--code-bg);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 9.5pt;
+    }
+
+    :not(pre) > code { padding: 1px 4px; }
+
+    pre {
+      margin: 10pt 0 16pt;
+      padding: 10pt 12pt;
+      overflow-x: auto;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--code-bg);
+      page-break-inside: avoid;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    pre code {
+      padding: 0;
+      background: transparent;
+      line-height: 1.4;
+    }
+
+    hr {
+      margin: 28pt 0;
+      border: 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    a { color: #174ea6; }
+
+    em { color: var(--muted); }
+
+    @media print {
+      body { background: #fff; }
+      article {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      h1 { break-before: page; }
+      h1:first-child { break-before: auto; }
+    }
+  </style>
+</head>
+<body>
+  <article><h1>COVER PAGE</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Project Title</strong></td>
+<td>KubeView: A Kubernetes Cluster Dashboard with Time-Travel Observability</td>
+</tr>
+<tr>
+<td><strong>Student Name(s) &amp; Roll Number(s)</strong></td>
+<td>Ankur Kalita, 2023EBCS782<br>Pradyut Fogla, 2023EBCS788<br>Varun Deep Saini, 2023EBCS663</td>
+</tr>
+<tr>
+<td><strong>Program</strong></td>
+<td>BSc Computer Science (Online Mode)</td>
+</tr>
+<tr>
+<td><strong>Institution Name</strong></td>
+<td>Birla Institute of Technology &amp; Science, Pilani</td>
+</tr>
+<tr>
+<td><strong>Academic Year</strong></td>
+<td>2025–2026</td>
+</tr>
+<tr>
+<td><strong>Internal Supervisor Name</strong></td>
+<td>Charan</td>
+</tr>
+</tbody></table>
+<hr>
+<h1>Declaration</h1>
+<p>We hereby declare that this capstone project titled &quot;KubeView: A Kubernetes Cluster Dashboard with Time-Travel Observability&quot; is an original work carried out by us and has not been submitted to any other university or institution for the award of any degree.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Roll Number</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ankur Kalita</td>
+<td>2023EBCS782</td>
+<td></td>
+</tr>
+<tr>
+<td>Pradyut Fogla</td>
+<td>2023EBCS788</td>
+<td></td>
+</tr>
+<tr>
+<td>Varun Deep Saini</td>
+<td>2023EBCS663</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Date: 28 August 2026</p>
+<hr>
+<h1>Abstract</h1>
+<p>Kubernetes has become the default way to run containerised applications, but its main interface is still the <code>kubectl</code> command line. It&#39;s hard to learn and gives no at-a-glance picture of cluster health. Web dashboards exist, but they tend to be heavy to install, need auth infrastructure before they show anything, and only ever display the current state of the cluster. So the question an operator actually asks after an incident — what changed, and when? — goes unanswered.</p>
+<p>KubeView is a lightweight, read-only web dashboard for Kubernetes clusters. A Go backend connects to the cluster through the standard kubeconfig using the official <code>client-go</code> library, and a Next.js/React frontend renders pods, deployments, services, StatefulSets, DaemonSets, ConfigMaps, Secrets, Ingresses, nodes, namespaces, events, and live pod logs. Updates reach the browser over Server-Sent Events, and the user can switch between clusters at runtime via kubeconfig contexts.</p>
+<p>The part we consider the project&#39;s real contribution is the cluster flight recorder. The backend continuously writes resource state changes and events into an embedded bbolt store (a 72-hour ring buffer by default). A timeline scrubber then re-renders every page as of any past moment, and a diff view lists what changed between two points in time — pod restarts, image changes, replica scaling, condition transitions — next to the events that fired in between.</p>
+<p>The system is covered by 227 backend Go tests, 60 frontend unit tests (Vitest/Testing Library), and 45 Playwright end-to-end tests; the E2E tests run against a real kind cluster in CI. Every commit also passes static analysis (golangci-lint, CodeQL) and vulnerability scanning (govulncheck). KubeView deploys as two containers, either through Docker Compose or with in-cluster Kubernetes manifests carrying a least-privilege, read-only RBAC role.</p>
+<hr>
+<h1>Table of Contents</h1>
+<ol>
+<li><a href="#chapter-1-introduction">Chapter 1: Introduction</a></li>
+<li><a href="#chapter-2-implementation-details">Chapter 2: Implementation Details</a></li>
+<li><a href="#chapter-3-testing-validation--results">Chapter 3: Testing, Validation &amp; Results</a></li>
+<li><a href="#chapter-4-execution--deployment-details">Chapter 4: Execution / Deployment Details</a></li>
+<li><a href="#chapter-5-project-execution-evidence">Chapter 5: Project Execution Evidence</a></li>
+<li><a href="#chapter-6-conclusion--future-work">Chapter 6: Conclusion &amp; Future Work</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#appendix">Appendix</a></li>
+</ol>
+<h1>List of Figures</h1>
+<table>
+<thead>
+<tr>
+<th>Figure</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fig. 1</td>
+<td>High-level system architecture</td>
+</tr>
+<tr>
+<td>Fig. 2</td>
+<td>Data flow diagram</td>
+</tr>
+<tr>
+<td>Fig. 3</td>
+<td>Flight recorder component interaction</td>
+</tr>
+<tr>
+<td>Fig. 4</td>
+<td>Dashboard overview screenshot</td>
+</tr>
+<tr>
+<td>Fig. 5</td>
+<td>Pods list screenshot</td>
+</tr>
+<tr>
+<td>Fig. 6</td>
+<td>Pod detail with live logs screenshot</td>
+</tr>
+<tr>
+<td>Fig. 7</td>
+<td>Timeline diff view screenshot</td>
+</tr>
+<tr>
+<td>Fig. 8</td>
+<td>Commit history screenshot</td>
+</tr>
+</tbody></table>
+<h1>List of Tables</h1>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table 1</td>
+<td>Technology stack</td>
+</tr>
+<tr>
+<td>Table 2</td>
+<td>Backend REST API endpoints</td>
+</tr>
+<tr>
+<td>Table 3</td>
+<td>Configuration environment variables</td>
+</tr>
+<tr>
+<td>Table 4</td>
+<td>Test suite summary</td>
+</tr>
+<tr>
+<td>Table 5</td>
+<td>Representative test cases</td>
+</tr>
+<tr>
+<td>Table 6</td>
+<td>Weekly progress summary</td>
+</tr>
+</tbody></table>
+<h1>List of Abbreviations</h1>
+<table>
+<thead>
+<tr>
+<th>Abbreviation</th>
+<th>Expansion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>API</td>
+<td>Application Programming Interface</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>Continuous Integration / Continuous Delivery</td>
+</tr>
+<tr>
+<td>CORS</td>
+<td>Cross-Origin Resource Sharing</td>
+</tr>
+<tr>
+<td>CRUD</td>
+<td>Create, Read, Update, Delete</td>
+</tr>
+<tr>
+<td>E2E</td>
+<td>End-to-End (testing)</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>JavaScript Object Notation</td>
+</tr>
+<tr>
+<td>K8s</td>
+<td>Kubernetes</td>
+</tr>
+<tr>
+<td>RBAC</td>
+<td>Role-Based Access Control</td>
+</tr>
+<tr>
+<td>REST</td>
+<td>Representational State Transfer</td>
+</tr>
+<tr>
+<td>SSE</td>
+<td>Server-Sent Events</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>User Interface</td>
+</tr>
+<tr>
+<td>UVP</td>
+<td>Unique Value Proposition</td>
+</tr>
+</tbody></table>
+<hr>
+<h1>CHAPTER 1: INTRODUCTION</h1>
+<blockquote>
+<p>Note: Problem identification and system design were completed as part of the Study Project. This chapter summarises that work and records what changed during implementation.</p>
+</blockquote>
+<h2>1.1 Overview of the Project</h2>
+<p>KubeView is a self-hosted web dashboard for watching Kubernetes clusters — a browser-friendly companion to <code>kubectl get</code>. You point it at your kubeconfig and get a live, searchable, filterable view of every major workload and configuration resource in the cluster, plus streaming pod logs. Nothing gets installed inside the cluster itself.</p>
+<p>It also remembers. The flight recorder captures every resource state change and event into an embedded store, so you can scrub a timeline and see the cluster exactly as it was at any moment inside the retention window, or diff two moments and see what changed along with the events that came with the change.</p>
+<p>KubeView never writes to the cluster. That one decision keeps the attack surface small and makes it safe to point at production.</p>
+<h2>1.2 Problem Statement &amp; Motivation</h2>
+<p>Running a Kubernetes cluster means answering questions like: which pods are unhealthy right now, and why? What&#39;s in the logs of this crashing container? The service broke at 2 a.m. — what changed around that time?</p>
+<p>The standard tooling answers these badly, for three separate reasons.</p>
+<p>First, <code>kubectl</code> is powerful but opaque. Working out &quot;what is unhealthy&quot; takes several chained commands and a mental join of their output. Newcomers find it hostile, and even experienced operators find it slow for exploration.</p>
+<p>Second, existing dashboards only show the present. The official Kubernetes Dashboard, Lens, and similar tools display current state. Once a pod is replaced, or an event ages out (Kubernetes keeps events for roughly an hour), the evidence of what happened is simply gone. After that, post-incident analysis depends on an external observability stack — Prometheus with Grafana and Loki, or a commercial APM — which is a lot of setup for a small team or a homelab.</p>
+<p>Third, most dashboards have to be deployed into the cluster, with elevated RBAC, an auth proxy, and ingress configuration, before they show a single pod.</p>
+<p>We wanted a tool that runs locally with zero in-cluster installation, is read-only by construction, and answers the &quot;what changed?&quot; question out of the box. No lightweight dashboard we found does that last part.</p>
+<h2>1.3 Objectives of the Capstone</h2>
+<ol>
+<li>Build a Go REST API that serves all major Kubernetes resource kinds (pods, deployments, services, nodes, namespaces, events, ConfigMaps, Secrets, Ingresses, StatefulSets, DaemonSets) through the official <code>client-go</code> library.</li>
+<li>Build a React/Next.js frontend with search, namespace filtering, status badges, and detail views including live pod log tailing.</li>
+<li>Support multi-cluster switching at runtime from the kubeconfig contexts.</li>
+<li>Push live updates to the browser via Server-Sent Events instead of relying on polling alone.</li>
+<li>Implement the cluster flight recorder: continuous recording of resource state and events into an embedded store with configurable retention, a &quot;state as of T&quot; API, and a field-level diff API between two moments.</li>
+<li>Back the code with unit, integration, and E2E test suites, strict linting, static analysis, vulnerability scanning, and CI on every commit.</li>
+<li>Ship the deployment artefacts: Dockerfiles, Docker Compose, and Kubernetes manifests with least-privilege RBAC.</li>
+</ol>
+<h2>1.4 Scope of Implementation</h2>
+<p><strong>In scope:</strong></p>
+<ul>
+<li>Read-only visibility of the eleven resource kinds listed above, across all namespaces or filtered to one.</li>
+<li>Pod detail view: containers (including init, sidecar, and ephemeral containers), conditions, volumes, and log tailing with container selection.</li>
+<li>Live updates over SSE, with a 5-second polling fallback.</li>
+<li>Multi-context switching across the clusters defined in the kubeconfig.</li>
+<li>History recording, time-travel rendering of all list pages, and two-point diffing with event correlation.</li>
+<li>Local execution, Docker Compose deployment, and in-cluster deployment via manifests.</li>
+</ul>
+<p><strong>Deliberately out of scope:</strong></p>
+<ul>
+<li>Any write operation (create/edit/delete/scale/exec). Excluded for safety.</li>
+<li>Authentication and multi-user access control. The tool targets single-operator local use; in-cluster exposure is guarded by a NetworkPolicy and documented warnings.</li>
+<li>Custom Resource Definitions (CRDs) and CPU/memory metrics.</li>
+</ul>
+<h2>1.5 Organization of the Report</h2>
+<p>Chapter 2 describes the architecture, technology stack, modules, and key algorithms, and Chapter 3 covers the test strategy, test cases, and results. Chapter 4 explains how to run and deploy the system. Chapter 5 collects project-execution evidence (version control, weekly progress, supervisor interaction), and Chapter 6 closes with achievements, limitations, and future work. The appendices hold the user manual, installation guide, and source-code links.</p>
+<hr>
+<h1>CHAPTER 2: IMPLEMENTATION DETAILS</h1>
+<h2>2.1 System Architecture &amp; Design</h2>
+<h3>High-level architecture</h3>
+<p>KubeView is two services:</p>
+<pre><code>┌─────────┐     HTTP/JSON + SSE      ┌──────────────────┐     client-go      ┌────────────────┐
+│ Browser │ ───────────────────────▶ │  Frontend         │                   │                │
+│         │                          │  Next.js (:5500)  │                   │  Kubernetes    │
+│         │ ◀── HTML/JS/CSS ──────── │                   │                   │  API Server(s) │
+│         │                          └──────────────────┘                   │                │
+│         │     REST + SSE           ┌──────────────────┐  list/get/watch   │                │
+│         │ ───────────────────────▶ │  Backend          │ ────────────────▶ │                │
+│         │ ◀── JSON / event stream  │  Go (:5501)       │ ◀──────────────── └────────────────┘
+└─────────┘                          │        │          │
+                                     │        ▼          │
+                                     │  ┌────────────┐   │
+                                     │  │ history.db │   │  (embedded bbolt store,
+                                     │  │  (bbolt)   │   │   72 h ring buffer)
+                                     │  └────────────┘   │
+                                     └──────────────────┘
+</code></pre>
+<p><em>Fig. 1. High-level system architecture. <code>&lt;Replace with rendered diagram in final PDF&gt;</code></em></p>
+<p>The <strong>backend</strong> (<code>kubeview-backend/</code>) is a single static Go binary exposing a REST + SSE API on port 5501. It loads the kubeconfig (or the in-cluster service-account token), keeps one Kubernetes clientset per context, reshapes raw Kubernetes objects into a compact JSON form for the frontend, and runs the flight recorder.</p>
+<p>The <strong>frontend</strong> (<code>kubeview-frontend/</code>) is a Next.js App Router application on port 5500. Each resource page fetches from the backend, subscribes to the SSE watch stream so it knows when to re-fetch, and falls back to polling every 5 seconds.</p>
+<h3>Data flow diagram</h3>
+<pre><code>                       (1) GET /api/pods?namespace=ns&amp;context=ctx
+  User ──▶ Page ──▶ API client ─────────────────────────────────▶ Router/CORS
+                                                                      │
+                                                (2) clientset.CoreV1().Pods(ns).List()
+                                                                      ▼
+                                                              Kubernetes API
+                                                                      │
+                                    (3) []v1.Pod                      ▼
+  User ◀── render ◀── React state ◀── (4) JSON ◀── transformer ◀── handler
+
+  Flight recorder (continuous, independent of requests):
+  Kubernetes API ──watch──▶ shared informers ──deltas──▶ store writer ──▶ bbolt (history.db)
+  Browser ◀── timeline UI ◀── /api/history/{range,state,diff} ◀── store reader
+</code></pre>
+<p><em>Fig. 2. Data flow. <code>&lt;Replace with rendered diagram in final PDF&gt;</code></em></p>
+<h3>Component interaction</h3>
+<p>A normal request travels browser → Next.js page → typed API client (<code>src/lib/api.ts</code>) → Go router (<code>handlers.go</code>) → per-context client manager (<code>clients.go</code>) → <code>client-go</code> wrappers (<code>kube.go</code>, <code>resources.go</code>, <code>workloads.go</code>) → transformers (<code>transformers.go</code>) → JSON back to the page.</p>
+<p>Live updates take a second path: <code>GET /api/watch</code> holds an SSE connection open, backend informers push resource-change notifications into it, and the frontend hook (<code>src/lib/hooks.ts</code>) re-fetches whichever resource list was affected.</p>
+<p>The history path (Fig. 3) runs continuously and independently of requests. Per-context shared informers feed every add, update, and delete into a single store writer, which persists delta versions into bbolt buckets keyed by resource kind and object UID. The <code>/api/history/state</code> reader rebuilds cluster state at time T by scanning versions at or before T; <code>/api/history/diff</code> rebuilds both endpoints and computes field-level change summaries (<code>history_diff.go</code>). A retention pruner deletes versions older than the configured window.</p>
+<p>In the UI, a <code>TimeTravelProvider</code> React context holds the selected timestamp. While one is set, every data hook switches from the live endpoints to <code>/api/history/state?at=T</code> — which means all the existing pages render historical data without any modification. A <code>TimelineBar</code> scrubber controls the timestamp.</p>
+<h2>2.2 Technology Stack</h2>
+<p><em>Table 1. Technology stack</em></p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Backend language</td>
+<td>Go</td>
+<td>1.26</td>
+<td>API server, flight recorder</td>
+</tr>
+<tr>
+<td>HTTP layer</td>
+<td>Go standard library <code>net/http</code> (<code>http.ServeMux</code>)</td>
+<td>stdlib</td>
+<td>Routing (Go 1.22+ pattern syntax), no web framework</td>
+</tr>
+<tr>
+<td>Kubernetes client</td>
+<td><code>k8s.io/client-go</code>, <code>k8s.io/api</code>, <code>k8s.io/apimachinery</code></td>
+<td>v0.36.1</td>
+<td>Cluster access, shared informers</td>
+</tr>
+<tr>
+<td>Embedded store</td>
+<td><code>go.etcd.io/bbolt</code></td>
+<td>v1.5.0</td>
+<td>Flight-recorder persistence (single-file B+tree)</td>
+</tr>
+<tr>
+<td>Frontend framework</td>
+<td>Next.js (App Router)</td>
+<td>16.1.6</td>
+<td>Pages, routing, build</td>
+</tr>
+<tr>
+<td>UI library</td>
+<td>React</td>
+<td>19.2.3</td>
+<td>Components</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>TypeScript</td>
+<td>5.x</td>
+<td>Type-safe frontend</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td>Tailwind CSS</td>
+<td>v4</td>
+<td>Utility-first styling</td>
+</tr>
+<tr>
+<td>Frontend unit tests</td>
+<td>Vitest + Testing Library + jsdom</td>
+<td>4.x</td>
+<td>Component/hook/API-client tests</td>
+</tr>
+<tr>
+<td>E2E tests</td>
+<td>Playwright</td>
+<td>latest</td>
+<td>Browser tests against a real kind cluster</td>
+</tr>
+<tr>
+<td>Backend tests</td>
+<td>Go <code>testing</code> + <code>client-go</code> fakes</td>
+<td>stdlib</td>
+<td>Unit + integration tests</td>
+</tr>
+<tr>
+<td>Lint / static analysis</td>
+<td>golangci-lint (max strictness), ESLint 9, CodeQL, govulncheck</td>
+<td>—</td>
+<td>Code quality and security</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>GitHub Actions</td>
+<td>—</td>
+<td>Test, lint, vuln-scan, E2E on every push/PR</td>
+</tr>
+<tr>
+<td>Packaging</td>
+<td>Docker, Docker Compose, Kubernetes manifests (kustomize)</td>
+<td>—</td>
+<td>Deployment</td>
+</tr>
+</tbody></table>
+<h2>2.3 System Modules</h2>
+<h3>Backend modules (<code>kubeview-backend/</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>main.go</code></td>
+<td>Server bootstrap, read/write timeouts, graceful shutdown on SIGINT/SIGTERM</td>
+</tr>
+<tr>
+<td><code>kube.go</code></td>
+<td>Kubeconfig loading (<code>KUBECONFIG</code>, <code>~/.kube/config</code>, or in-cluster), clientset construction, thin list/get wrappers</td>
+</tr>
+<tr>
+<td><code>clients.go</code></td>
+<td>Multi-context client manager: enumerates kubeconfig contexts, lazily builds and caches one clientset per context, resolves the <code>?context=</code> query parameter</td>
+</tr>
+<tr>
+<td><code>handlers.go</code></td>
+<td>Router, CORS middleware, error helpers, all live-resource handlers, SSE <code>/api/watch</code> endpoint</td>
+</tr>
+<tr>
+<td><code>resources.go</code></td>
+<td>ConfigMap, Secret, Ingress list wrappers. Secret values are redacted; only keys and sizes are returned</td>
+</tr>
+<tr>
+<td><code>workloads.go</code></td>
+<td>StatefulSet, DaemonSet list wrappers</td>
+</tr>
+<tr>
+<td><code>transformers.go</code></td>
+<td>Converts raw Kubernetes objects into compact JSON response structs (status derivation, age formatting, container summaries)</td>
+</tr>
+<tr>
+<td><code>history_config.go</code></td>
+<td>History env parsing (<code>HISTORY_RETENTION_HOURS</code>, <code>HISTORY_DIR</code>) and recorder bootstrap</td>
+</tr>
+<tr>
+<td><code>history_recorder.go</code></td>
+<td>Per-context shared informers feeding a single store writer goroutine</td>
+</tr>
+<tr>
+<td><code>history_store.go</code></td>
+<td>bbolt store: delta-version writes, state-at-time scans, retention pruning</td>
+</tr>
+<tr>
+<td><code>history_diff.go</code></td>
+<td>Field-level change summaries between two recorded states</td>
+</tr>
+<tr>
+<td><code>history_handlers.go</code></td>
+<td><code>/api/history/range</code>, <code>/api/history/state</code>, <code>/api/history/diff</code></td>
+</tr>
+</tbody></table>
+<h3>Frontend modules (<code>kubeview-frontend/src/</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>app/*/page.tsx</code></td>
+<td>One route per resource kind: dashboard, namespaces, pods, deployments, services, nodes, events, configmaps, secrets, ingresses, statefulsets, daemonsets, timeline</td>
+</tr>
+<tr>
+<td><code>app/pods/[namespace]/[name]/page.tsx</code></td>
+<td>Pod detail: containers, conditions, volumes, live log viewer with container picker and tail-length control</td>
+</tr>
+<tr>
+<td><code>app/timeline/page.tsx</code></td>
+<td>Two-moment diff view: changed objects with field-level summaries plus interleaved events</td>
+</tr>
+<tr>
+<td><code>components/Sidebar.tsx</code></td>
+<td>Navigation</td>
+</tr>
+<tr>
+<td><code>components/ResourceList.tsx</code></td>
+<td>Shared list plumbing (search, namespace filter, loading/error states)</td>
+</tr>
+<tr>
+<td><code>components/ContextSwitcher.tsx</code>, <code>ClusterProvider.tsx</code>, <code>ClusterScope.tsx</code></td>
+<td>Cluster context selection, propagated to every API call</td>
+</tr>
+<tr>
+<td><code>components/TimeTravelProvider.tsx</code>, <code>TimelineBar.tsx</code></td>
+<td>Time-travel state and the timeline scrubber UI</td>
+</tr>
+<tr>
+<td><code>components/StatusBadge.tsx</code>, <code>NamespaceFilter.tsx</code>, <code>SearchInput.tsx</code>, <code>LoadingSpinner.tsx</code>, <code>ErrorMessage.tsx</code></td>
+<td>Reusable UI pieces</td>
+</tr>
+<tr>
+<td><code>lib/api.ts</code></td>
+<td>Typed API client for every backend endpoint</td>
+</tr>
+<tr>
+<td><code>lib/hooks.ts</code></td>
+<td>Data-fetching hooks: polling, SSE subscription, time-travel switching</td>
+</tr>
+</tbody></table>
+<h3>Functional flow (example: user scrubs the timeline)</h3>
+<ol>
+<li>On load, <code>TimelineBar</code> calls <code>/api/history/range</code> to learn the recorded window.</li>
+<li>The user drags the scrubber. <code>TimeTravelProvider</code> stores the chosen timestamp and the UI enters &quot;past mode&quot;, with a visible badge.</li>
+<li>Every mounted page&#39;s data hook notices past mode and re-fetches from <code>/api/history/state?at=T</code>.</li>
+<li>The backend rebuilds each object&#39;s latest version at or before T from bbolt and returns the same JSON shape as the live endpoints, so the pages render unchanged.</li>
+<li>Clearing the scrubber puts every page back on live data and SSE updates.</li>
+</ol>
+<h2>2.4 Key Algorithms / Logic</h2>
+<h3>(a) Flight-recorder delta versioning</h3>
+<p>Storing a full cluster snapshot every few seconds would eat disk fast. The recorder instead stores a new version of an object only when it actually changes, keyed so that a point-in-time read is just a range scan:</p>
+<pre><code>on informer event (add / update / delete) for object O of kind K:
+    doc ← transform(O)                      # same JSON shape the live API serves
+    if delete: doc.deleted ← true
+    key ← (K, O.uid, now_unix_ms)
+    if latest stored version of (K, O.uid) is identical to doc: skip   # dedup
+    write bucket[K][O.uid][now] = doc
+
+state_at(T):
+    for each kind K, each uid U:
+        v ← greatest version timestamp ≤ T in bucket[K][U]
+        if v exists and not v.deleted: include v in result
+
+prune(retention):
+    delete every version older than (now − retention),
+    keeping at least the newest version ≤ cutoff per object
+    (so state_at just inside the window is still complete)
+</code></pre>
+<h3>(b) Two-moment diff with event correlation</h3>
+<pre><code>diff(T1, T2):
+    S1 ← state_at(T1); S2 ← state_at(T2)
+    for each uid in S1 ∪ S2:
+        absent in S1            → ADDED
+        absent/deleted in S2    → REMOVED
+        else compare fields     → MODIFIED with change list, e.g.
+              image: nginx:1.25 → nginx:1.27
+              replicas: 2 → 5
+              restarts: 0 → 4
+              condition Ready: True → False
+    events ← all recorded events with T1 &lt; timestamp ≤ T2
+    return {changes, events} sorted for display
+</code></pre>
+<p>Field comparison is semantic, not textual. <code>history_diff.go</code> compares the typed fields that matter operationally — images, replica counts, restart counts, phases, conditions, node assignment — and emits one-line summaries. That choice is what keeps the Timeline page readable.</p>
+<h3>(c) Pod status derivation</h3>
+<p>The pod &quot;status&quot; that <code>kubectl</code> shows isn&#39;t a single field, so the transformer reproduces the derivation: start from <code>pod.Status.Phase</code>, override with the reason of any non-running container state (<code>CrashLoopBackOff</code>, <code>ImagePullBackOff</code>, <code>Completed</code>, and so on), account for init/sidecar containers and deletion timestamps, and compute a ready count like <code>2/3</code>. Container statuses are matched to containers by name rather than by index, which is what makes init, sidecar, and ephemeral containers come out right.</p>
+<h3>(d) Live updates over SSE</h3>
+<p><code>/api/watch</code> opens a Server-Sent Events stream. Backend informers publish change notifications into per-subscriber channels; a slow client&#39;s channel drops and coalesces rather than blocking the informer. On the other end, the frontend hook re-fetches only the affected resource kind. Changes land in the UI in under a second at almost no bandwidth cost, and the 5-second polling stays around as a fallback.</p>
+<h2>2.5 Screenshots / Code Snippets</h2>
+<p><em>(Screenshots live in <code>screenshots/</code>; embed at full width in the final PDF.)</em></p>
+<ul>
+<li>Fig. 4. Dashboard overview: <code>screenshots/01-dashboard.png</code></li>
+<li>Fig. 5. Pods list with search and namespace filter: <code>screenshots/03-pods.png</code></li>
+<li>Fig. 6. Pod detail with live logs: <code>screenshots/04-pod-detail.png</code>, <code>screenshots/05-pod-logs.png</code></li>
+<li>Fig. 7. Timeline diff view (image change, replica scaling, pod added/removed, condition transitions): <code>screenshots/08-timeline.png</code></li>
+</ul>
+<p>A representative code section — the Go 1.22+ router with method-scoped patterns (<code>handlers.go</code>):</p>
+<pre><code class="language-go">mux.HandleFunc(&quot;GET /api/health&quot;, handleHealth)
+mux.HandleFunc(&quot;GET /api/contexts&quot;, handleContexts(manager))
+mux.HandleFunc(&quot;GET /api/pods&quot;, wrap(handlePods))
+mux.HandleFunc(&quot;GET /api/pods/{namespace}/{name}&quot;, wrap(handlePod))
+mux.HandleFunc(&quot;GET /api/pods/{namespace}/{name}/logs&quot;, wrap(handlePodLogs))
+mux.HandleFunc(&quot;GET /api/watch&quot;, wrap(handleWatch))
+mux.HandleFunc(&quot;GET /api/history/range&quot;, wrap(history.handleRange))
+mux.HandleFunc(&quot;GET /api/history/state&quot;, wrap(history.handleState))
+mux.HandleFunc(&quot;GET /api/history/diff&quot;, wrap(history.handleDiff))
+</code></pre>
+<p><em>Table 2. Backend REST API endpoints</em></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/api/health</code></td>
+<td>Liveness probe</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/contexts</code></td>
+<td>Kubeconfig contexts available for switching</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cluster</code></td>
+<td>Cluster version, platform, node count, current context</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/namespaces</code></td>
+<td>List namespaces</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/pods[?namespace=ns]</code></td>
+<td>List pods</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/pods/{ns}/{name}</code></td>
+<td>Pod detail</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/pods/{ns}/{name}/logs?container=c&amp;tailLines=n</code></td>
+<td>Pod logs</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/deployments</code> / <code>services</code> / <code>nodes</code> / <code>events</code></td>
+<td>Core resource lists</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/configmaps</code> / <code>secrets</code> / <code>ingresses</code> / <code>statefulsets</code> / <code>daemonsets</code></td>
+<td>Extended resource lists</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/watch</code></td>
+<td>SSE stream of resource-change notifications</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/history/range</code></td>
+<td>Flight-recorder bounds (enabled, start, end, retention)</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/history/state?at=T</code></td>
+<td>Cluster state as of a past moment</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/history/diff?from=T1&amp;to=T2</code></td>
+<td>Changes between two moments plus interleaved events</td>
+</tr>
+</tbody></table>
+<p>All list endpoints accept <code>?namespace=</code> and <code>?context=</code> query parameters. Secret values are never returned — only key names and sizes.</p>
+<hr>
+<h1>CHAPTER 3: TESTING, VALIDATION &amp; RESULTS</h1>
+<h2>3.1 Test Plan</h2>
+<h3>Testing strategy</h3>
+<p>There are four layers, all automated in CI on every push and pull request.</p>
+<p>Backend unit tests in Go cover the handlers, transformers, kubeconfig loading, the multi-context manager, and the entire history subsystem, all running against <code>client-go</code> fake clientsets and temporary bbolt stores. No real cluster needed, and the suite runs under the race detector. Backend integration tests then exercise the composed router end-to-end over <code>httptest</code>.</p>
+<p>On the frontend, Vitest and Testing Library cover the API client, the polling/SSE hooks, Sidebar, ResourceList, TimelineBar, the timeline page, and past-mode pod detail, rendered in jsdom against mocked fetch/EventSource.</p>
+<p>The end-to-end layer is the expensive one, and deliberately so. CI boots a real kind cluster, applies <code>kubeview-e2e/fixtures.yaml</code> (nginx deployments, multi-container pods, a crashing pod, ConfigMaps, Secrets, StatefulSets, DaemonSets, Ingresses), starts the real backend and frontend, and drives a real browser through every page — including the live-update and time-travel scenarios.</p>
+<p>On top of the tests: golangci-lint at maximum strictness (driven from 1720 findings to 0), ESLint 9, CodeQL static analysis, and govulncheck. All reported CVEs were patched by dependency and toolchain bumps.</p>
+<h3>Tools used</h3>
+<p>Go <code>testing</code> with <code>client-go</code> fakes, <code>httptest</code>, Vitest, @testing-library/react, jsdom, Playwright, kind, GitHub Actions, golangci-lint, ESLint, CodeQL, govulncheck.</p>
+<h2>3.2 Test Cases</h2>
+<p><em>Table 4. Test suite summary</em></p>
+<table>
+<thead>
+<tr>
+<th>Suite</th>
+<th>Tool</th>
+<th>Count</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Backend unit + integration</td>
+<td>Go <code>testing</code></td>
+<td>227 test functions</td>
+<td>Handlers, transformers, kube client, contexts, SSE, full history subsystem</td>
+</tr>
+<tr>
+<td>Frontend unit</td>
+<td>Vitest + Testing Library</td>
+<td>60 tests</td>
+<td>API client, hooks, components, timeline, past mode</td>
+</tr>
+<tr>
+<td>End-to-end</td>
+<td>Playwright + kind</td>
+<td>45 tests across 16 spec files</td>
+<td>Every page against a real cluster and browser</td>
+</tr>
+</tbody></table>
+<p><em>Table 5. Representative test cases</em></p>
+<table>
+<thead>
+<tr>
+<th>Test Case ID</th>
+<th>Description</th>
+<th>Input</th>
+<th>Expected Output</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TC-01</td>
+<td>Health endpoint</td>
+<td><code>GET /api/health</code></td>
+<td><code>200</code>, <code>{&quot;status&quot;:&quot;ok&quot;}</code></td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-02</td>
+<td>List pods, all namespaces</td>
+<td><code>GET /api/pods</code> against fake clientset with 3 pods</td>
+<td><code>200</code>, 3 pod summaries with derived status and ready counts</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-03</td>
+<td>Namespace filter</td>
+<td><code>GET /api/pods?namespace=team-a</code></td>
+<td>Only <code>team-a</code> pods returned</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-04</td>
+<td>Pod detail not found</td>
+<td><code>GET /api/pods/default/missing</code></td>
+<td><code>404</code> with JSON error body</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-05</td>
+<td>Pod logs, multi-container pod</td>
+<td><code>GET .../logs?container=sidecar&amp;tailLines=50</code></td>
+<td>Logs of the named container only, capped tail</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-06</td>
+<td>Log tail cap</td>
+<td><code>tailLines=999999</code></td>
+<td>Tail clamped to server maximum, no error</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-07</td>
+<td>Pod status derivation</td>
+<td>Pod with container in <code>CrashLoopBackOff</code></td>
+<td>Status string <code>CrashLoopBackOff</code>, not <code>Running</code></td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-08</td>
+<td>Container matching by name</td>
+<td>Pod with init + app containers, statuses out of order</td>
+<td>Each container paired with its own status</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-09</td>
+<td>Secret redaction</td>
+<td><code>GET /api/secrets</code></td>
+<td>Key names and sizes only; no secret values in response</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-10</td>
+<td>CORS allow-list</td>
+<td>Request with <code>Origin</code> not in <code>CORS_ORIGIN</code></td>
+<td>No CORS headers on response</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-11</td>
+<td>Context switching</td>
+<td><code>GET /api/pods?context=cluster-b</code></td>
+<td>Pods served from cluster-b&#39;s clientset; unknown context returns an error</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-12</td>
+<td>SSE watch stream</td>
+<td>Client subscribes to <code>/api/watch</code>, pod created in cluster</td>
+<td>Change notification event received on the stream</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-13</td>
+<td>History: state-at</td>
+<td>Record v1 at t1, v2 at t3; query <code>state?at=t2</code></td>
+<td>v1 returned (latest version ≤ t2)</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-14</td>
+<td>History: deleted object</td>
+<td>Object deleted before <code>at</code></td>
+<td>Object absent from state</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-15</td>
+<td>History: diff</td>
+<td>Deployment image changed between T1 and T2</td>
+<td>MODIFIED entry <code>image: old → new</code> plus events in (T1, T2]</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-16</td>
+<td>History: retention pruning</td>
+<td>Versions older than retention window</td>
+<td>Pruned, while state just inside the window stays complete</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-17</td>
+<td>History: invalid params</td>
+<td><code>state?at=garbage</code></td>
+<td><code>400</code> with JSON error</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-18</td>
+<td>E2E: pods page</td>
+<td>Browser opens <code>/pods</code> against kind cluster with fixtures</td>
+<td>Fixture pods visible, searchable, filterable</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-19</td>
+<td>E2E: crashing pod</td>
+<td>Fixture pod in CrashLoopBackOff</td>
+<td>Red status badge shown on pods page</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-20</td>
+<td>E2E: log streaming</td>
+<td>Open pod detail, select container</td>
+<td>Live log lines render and update</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-21</td>
+<td>E2E: live updates</td>
+<td>Scale deployment while page open</td>
+<td>Pod list updates without manual refresh</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-22</td>
+<td>E2E: time travel</td>
+<td>Delete a pod, scrub timeline to before deletion</td>
+<td>Deleted pod visible in past mode; timeline diff lists the deletion and its events</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-23</td>
+<td>Graceful shutdown</td>
+<td>SIGTERM to backend</td>
+<td>In-flight requests complete, process exits 0</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>TC-24</td>
+<td>Frontend: past-mode pod detail</td>
+<td>Time-travel timestamp set, open pod detail</td>
+<td>Data fetched from history endpoint; past-mode badge shown; log controls disabled</td>
+<td>Pass</td>
+</tr>
+</tbody></table>
+<p><em>(The repository holds the full inventory of 227 backend, 60 frontend, and 45 E2E automated cases; this table is a cross-section. Attach full CI run output in the final PDF.)</em></p>
+<h2>3.3 Results &amp; Analysis</h2>
+<h3>Observations</h3>
+<p>All suites pass on the final commit (<code>8ee601c</code>) in GitHub Actions CI: backend tests with <code>-race</code>, frontend unit tests, the lint jobs, CodeQL, govulncheck, and the full Playwright E2E job against a live kind cluster. See <code>docs/img/ci-runs.png</code> for the passing workflow runs.</p>
+<p>The real-cluster CI pipeline paid for itself. The E2E layer repeatedly caught integration regressions the unit layers couldn&#39;t see — JSON field-name mismatches between backend struct tags and frontend types, for one.</p>
+<p>Two smaller notes. golangci-lint at maximum strictness reported 1,720 findings when first enabled; we fixed all of them, and the CI gate keeps the count at zero. And govulncheck flagged CVEs in <code>golang.org/x/net</code> and the Go standard library during the project, which dependency and toolchain upgrades fixed.</p>
+<h3>Performance / accuracy metrics</h3>
+<ul>
+<li><strong>API latency.</strong> List endpoints respond in a few milliseconds to a few tens of milliseconds against a local kind cluster, most of which is the Kubernetes API round-trip. History <code>state-at</code> reconstruction over a 72-hour window of a small cluster stays under 100 ms, since each object&#39;s versions are a single range scan in bbolt.</li>
+<li><strong>Storage.</strong> Delta versioning with dedup writes a record only on actual change, so an idle cluster consumes almost no history storage. The retention pruner bounds the growth of <code>history.db</code>.</li>
+<li><strong>Update latency.</strong> SSE pushes cluster changes into the UI in under a second. Polling alone had a worst case of 5 seconds.</li>
+<li><strong>Memory.</strong> The backend is a single static binary; informer caches plus bbolt keep the resident footprint at tens of MB for small clusters.</li>
+<li><strong>Accuracy.</strong> Time-travel state reproduces exactly what the live API served at recording time, because the recorder persists the same transformed JSON documents the live endpoints emit.</li>
+</ul>
+<hr>
+<h1>CHAPTER 4: EXECUTION / DEPLOYMENT DETAILS</h1>
+<h2>4.1 Execution Environment</h2>
+<ul>
+<li><strong>Development machines:</strong> macOS / Linux; Go 1.26+, Node.js 18+, Docker, kubectl.</li>
+<li><strong>Clusters used:</strong> kind and Docker Desktop Kubernetes locally; kind in CI.</li>
+<li><strong>Prerequisite check:</strong> if <code>kubectl get nodes</code> succeeds, KubeView can connect.</li>
+</ul>
+<h2>4.2 Deployment Steps</h2>
+<h3>Local (developer mode)</h3>
+<pre><code class="language-bash"># Terminal 1 — backend (http://localhost:5501)
+cd kubeview-backend &amp;&amp; go run .
+
+# Terminal 2 — frontend (http://localhost:5500)
+cd kubeview-frontend &amp;&amp; npm install &amp;&amp; npm run dev
+</code></pre>
+<h3>Docker Compose</h3>
+<pre><code class="language-bash">docker compose up --build
+</code></pre>
+<p>The backend runs on the host network with <code>~/.kube/config</code> mounted read-only; the dashboard is at <code>http://localhost:5500</code>.</p>
+<h3>In-cluster (Kubernetes manifests)</h3>
+<pre><code class="language-bash">docker build -t kubeview-backend:latest kubeview-backend/
+docker build -t kubeview-frontend:latest kubeview-frontend/
+kind load docker-image kubeview-backend:latest kubeview-frontend:latest
+
+kubectl apply -k deploy/kubernetes/
+kubectl -n kubeview port-forward svc/kubeview-frontend 5500:5500
+</code></pre>
+<p>The manifests create a dedicated namespace, a ServiceAccount, and a ClusterRole/ClusterRoleBinding granting read-only access (<code>get</code>, <code>list</code>, <code>watch</code>) with no write verbs. A NetworkPolicy restricts backend ingress to the frontend pod. When no kubeconfig is present, the backend authenticates with the pod&#39;s service-account token.</p>
+<p><em>Table 3. Configuration environment variables</em></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Service</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PORT</code></td>
+<td>backend</td>
+<td><code>5501</code></td>
+<td>API listen port</td>
+</tr>
+<tr>
+<td><code>CORS_ORIGIN</code></td>
+<td>backend</td>
+<td><code>http://localhost:5500</code></td>
+<td>Comma-separated allowed browser origins</td>
+</tr>
+<tr>
+<td><code>KUBECONFIG</code></td>
+<td>backend</td>
+<td><code>~/.kube/config</code></td>
+<td>Kubeconfig path(s), colon-separated, merged like kubectl; in-cluster token used when absent</td>
+</tr>
+<tr>
+<td><code>HISTORY_RETENTION_HOURS</code></td>
+<td>backend</td>
+<td><code>72</code></td>
+<td>Flight-recorder retention; <code>0</code> disables recording</td>
+</tr>
+<tr>
+<td><code>HISTORY_DIR</code></td>
+<td>backend</td>
+<td>user cache dir</td>
+<td>Location of <code>history.db</code>; point at a persistent volume in containers</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_API_BASE</code></td>
+<td>frontend</td>
+<td><code>http://localhost:5501/api</code></td>
+<td>Backend URL, baked in at build time</td>
+</tr>
+</tbody></table>
+<h2>4.3 Demo Screenshots</h2>
+<p>See <code>screenshots/</code> (Figs. 4–7): dashboard, namespaces, pods, pod detail, pod logs, deployments, services, nodes, events, and the timeline diff view (<code>screenshots/08-timeline.png</code>).</p>
+<h2>4.4 Demo Video Link</h2>
+<p><code>&lt;DEMO VIDEO LINK&gt;</code></p>
+<hr>
+<h1>CHAPTER 5: PROJECT EXECUTION EVIDENCE</h1>
+<h2>5.1 Version Control Evidence</h2>
+<ul>
+<li><strong>GitHub repository:</strong> <a href="https://github.com/varundeepsaini/kubeview">https://github.com/varundeepsaini/kubeview</a> (public)</li>
+<li><strong>Development model:</strong> feature branches merged via pull requests (#12–#27), with CI gates (tests, lint, CodeQL, govulncheck, E2E) required on every PR.</li>
+<li><strong>Commit history screenshot:</strong> <code>docs/img/commit-history.png</code> (Fig. 8); CI workflow runs: <code>docs/img/ci-runs.png</code></li>
+</ul>
+<h2>5.2 Weekly Progress Summary</h2>
+<p><em>Table 6. Weekly progress summary (derived from commit/PR history; adjust weeks to the official plan)</em></p>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Task Planned</th>
+<th>Task Completed</th>
+<th>Supervisor Remark</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Repository setup, project scaffolding</td>
+<td>Repo initialised; Next.js frontend and initial API scaffolding (<code>e2541e3</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>2–3</td>
+<td>Backend implementation in Go</td>
+<td>Go backend with client-go, all core endpoints; full Go test suite; legacy Node.js prototype removed (<code>80897d0</code>–<code>88f695c</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>4–5</td>
+<td>Hardening and engineering quality</td>
+<td>Error handling hardened, log tail capped; strict CI, golangci-lint (1720→0 findings), CodeQL, govulncheck, CVE patching (<code>67ef1ae</code>–<code>e192afa</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Documentation + events</td>
+<td>Top-level README (#12); Events page (#13)</td>
+<td></td>
+</tr>
+<tr>
+<td>7–8</td>
+<td>Container correctness + configurability</td>
+<td>Multi-container/init/sidecar/ephemeral container fixes (#17, #20); env-based configuration (#21)</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Deployment artefacts</td>
+<td>Dockerfiles, Compose, K8s manifests with read-only RBAC + NetworkPolicy (#22, #23)</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>E2E infrastructure</td>
+<td>Playwright E2E suite against real kind cluster in CI (#24)</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Multi-cluster support</td>
+<td>Multi-context/multi-cluster switching (#25)</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Live updates + resource coverage</td>
+<td>SSE streaming of updates and pod logs (#27); Vitest unit tooling; ConfigMaps/Secrets/Ingresses/StatefulSets/DaemonSets views (#26)</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Flight recorder</td>
+<td>Cluster flight recorder with time-travel timeline (#16); final report</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>5.3 Supervisor Interaction Summary</h2>
+<p><em>(To be filled by the supervisor.)</em></p>
+<table>
+<thead>
+<tr>
+<th>Review Date</th>
+<th>Mode</th>
+<th>Key Feedback Received</th>
+<th>Action Taken</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h1>CHAPTER 6: CONCLUSION &amp; FUTURE WORK</h1>
+<h2>6.1 Summary of Implementation</h2>
+<p>KubeView is a working Kubernetes dashboard built from a Go backend with few dependencies (standard-library HTTP, client-go, an embedded bbolt store) and a Next.js frontend. It covers eleven resource kinds, live log tailing, SSE live updates, and multi-cluster switching. The flight recorder — the piece we consider the project&#39;s main contribution — adds time-travel rendering and two-moment diffing of cluster state with no configuration at all.</p>
+<h2>6.2 Achievements</h2>
+<p>The one we&#39;re most pleased with is history in a small tool: time travel in a dashboard that installs nothing in the cluster and runs as two small containers. Getting the same answer any other way means standing up a full observability stack.</p>
+<p>The test coverage held up too. 227 backend, 60 frontend, and 45 E2E automated tests, race-detector runs, golangci-lint held at zero findings, CodeQL and govulncheck gates, and every feature merged through a PR with CI. The E2E pipeline boots an actual kind cluster per run, so the tests exercise the real system rather than mocks.</p>
+<p>Security-wise, the tool is read-only by construction, ships least-privilege RBAC, redacts secret values, allow-lists CORS origins, includes a NetworkPolicy, and documents its exposure warnings.</p>
+<h2>6.3 Limitations</h2>
+<ul>
+<li><strong>No authentication.</strong> The backend API is unauthenticated. Fine for local single-operator use, but in-cluster exposure relies on the NetworkPolicy and must not be published via Ingress without an auth proxy.</li>
+<li><strong>History scale.</strong> The flight recorder targets small-to-medium clusters. Very large clusters would need snapshots or compaction beyond per-object delta chains.</li>
+<li><strong>Coverage gaps.</strong> No CRD support, no CPU/memory metrics, no exec-into-container (that last one is also a deliberate safety exclusion).</li>
+<li><strong>Single-writer store.</strong> bbolt binds history to one backend replica; scaling the backend horizontally would need an external store.</li>
+</ul>
+<h2>6.4 Future Enhancements</h2>
+<ol>
+<li>Pluggable authentication (OIDC or reverse-proxy header auth) so multi-user, in-cluster exposure becomes safe.</li>
+<li>Metrics integration (metrics-server or Prometheus) for CPU/memory charts on the existing pages and on the timeline.</li>
+<li>CRD discovery, so operators can watch custom resources through the same list, detail, and history machinery.</li>
+<li>History export/import and an &quot;incident bundle&quot; download for sharing a time window with teammates.</li>
+<li>Timeline annotations (deploy markers, manual notes) correlated with the recorded diffs.</li>
+</ol>
+<hr>
+<h1>REFERENCES</h1>
+<ol>
+<li>Kubernetes Authors, &quot;Kubernetes Documentation,&quot; kubernetes.io. [Online]. Available: <a href="https://kubernetes.io/docs/">https://kubernetes.io/docs/</a>. [Accessed: Aug. 2026].</li>
+<li>Kubernetes Authors, &quot;client-go: Go client for Kubernetes,&quot; GitHub. [Online]. Available: <a href="https://github.com/kubernetes/client-go">https://github.com/kubernetes/client-go</a>. [Accessed: Aug. 2026].</li>
+<li>Kubernetes Authors, &quot;API Concepts: Efficient detection of changes (watch),&quot; kubernetes.io. [Online]. Available: <a href="https://kubernetes.io/docs/reference/using-api/api-concepts/">https://kubernetes.io/docs/reference/using-api/api-concepts/</a>. [Accessed: Aug. 2026].</li>
+<li>The Go Authors, &quot;net/http, Go standard library,&quot; pkg.go.dev. [Online]. Available: <a href="https://pkg.go.dev/net/http">https://pkg.go.dev/net/http</a>. [Accessed: Aug. 2026].</li>
+<li>etcd-io, &quot;bbolt: an embedded key/value database for Go,&quot; GitHub. [Online]. Available: <a href="https://github.com/etcd-io/bbolt">https://github.com/etcd-io/bbolt</a>. [Accessed: Aug. 2026].</li>
+<li>Vercel, &quot;Next.js Documentation,&quot; nextjs.org. [Online]. Available: <a href="https://nextjs.org/docs">https://nextjs.org/docs</a>. [Accessed: Aug. 2026].</li>
+<li>Meta Open Source, &quot;React Documentation,&quot; react.dev. [Online]. Available: <a href="https://react.dev/">https://react.dev/</a>. [Accessed: Aug. 2026].</li>
+<li>Tailwind Labs, &quot;Tailwind CSS Documentation,&quot; tailwindcss.com. [Online]. Available: <a href="https://tailwindcss.com/docs">https://tailwindcss.com/docs</a>. [Accessed: Aug. 2026].</li>
+<li>Microsoft, &quot;Playwright Documentation,&quot; playwright.dev. [Online]. Available: <a href="https://playwright.dev/docs/intro">https://playwright.dev/docs/intro</a>. [Accessed: Aug. 2026].</li>
+<li>Kubernetes SIGs, &quot;kind: Kubernetes in Docker,&quot; kind.sigs.k8s.io. [Online]. Available: <a href="https://kind.sigs.k8s.io/">https://kind.sigs.k8s.io/</a>. [Accessed: Aug. 2026].</li>
+<li>golangci, &quot;golangci-lint Documentation,&quot; golangci-lint.run. [Online]. Available: <a href="https://golangci-lint.run/">https://golangci-lint.run/</a>. [Accessed: Aug. 2026].</li>
+<li>WHATWG, &quot;Server-Sent Events, HTML Living Standard,&quot; html.spec.whatwg.org. [Online]. Available: <a href="https://html.spec.whatwg.org/multipage/server-sent-events.html">https://html.spec.whatwg.org/multipage/server-sent-events.html</a>. [Accessed: Aug. 2026].</li>
+</ol>
+<hr>
+<h1>APPENDIX</h1>
+<h2>A. User Manual</h2>
+<p>See the repository README (<code>README.md</code>): features, page-by-page usage, configuration reference, and troubleshooting. <code>&lt;In the final PDF, paste the user-manual sections here.&gt;</code></p>
+<h2>B. Installation Guide</h2>
+<p>See <code>README.md</code> sections &quot;Prerequisites&quot;, &quot;Getting started&quot;, and &quot;Deploying&quot; for local, Docker Compose, and in-cluster instructions. <code>&lt;In the final PDF, paste the installation sections here.&gt;</code></p>
+<h2>C. Source Code Link (GitHub)</h2>
+<p><a href="https://github.com/varundeepsaini/kubeview">https://github.com/varundeepsaini/kubeview</a></p>
+<h2>D. Demo Video Link</h2>
+<p><code>&lt;DEMO VIDEO LINK&gt;</code></p>
+<hr>
+<p><em>Formatting note for PDF conversion: Times New Roman; 12 pt body, 14 pt headings; 1.5 line spacing; 1-inch margins on all sides; page numbers bottom-centre; export as PDF.</em></p>
+</article>
+</body>
+</html>
