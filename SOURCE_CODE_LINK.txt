@@ -1,0 +1,12 @@
+Project repository:
+https://github.com/varundeepsaini/kubeview
+
+Submission commit:
+8ee601c
+
+Release tag:
+[PLACEHOLDER: final release tag]
+
+Access:
+Public as of 28 August 2026. If changed to private, grant view access to the internal examiner and viva supervisor before submission.
+
