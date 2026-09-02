@@ -2,6 +2,8 @@
 
 Audit date: 28 August 2026
 
+Contributor classification reviewed: 2 September 2026
+
 Source baseline: commit `8ee601c`
 
 > This is an internal evidence check. It is not a Turnitin, Ouriginal, MOSS, JPlag, or institution-approved plagiarism result.
@@ -10,7 +12,7 @@ Source baseline: commit `8ee601c`
 
 | Check | Result | Interpretation |
 | --- | --- | --- |
-| Git provenance | 27 commits and 6 recorded author identities or aliases | Contributor roles still require human classification. |
+| Git provenance | 27 commits and 6 recorded author identities or aliases | All aliases are mapped to the three student team members in the contribution inventory. |
 | Tracked source scope | 127 files | The audit used files tracked at the frozen commit. |
 | Dependency provenance | 591 inventory rows | Third-party packages are identified; licence verification remains open where manifests omit it. |
 | Source attribution markers | 0 matches outside lockfiles and checksums | No embedded copyright, generated-code, or copied/adapted-source marker was found by this pattern scan. This does not prove originality. |
@@ -27,7 +29,7 @@ Source baseline: commit `8ee601c`
 - 1	Varun Deep Saini <v.saini@rippling.com>
 - 1	Varun Deep Saini <varun.23bcs10048@ms.sst.scaler.com>
 
-These identities come from Git metadata. They do not establish which work may be claimed by the student. The final contribution statement must classify each person and describe their work.
+These identities come from Git metadata. They map to Varun Deep Saini, Ankur Kalita, and Pradyut Fogla, the three members of the submitted student group. Commit counts alone do not measure total project contribution.
 
 ## Exact prose repetition
 
@@ -50,12 +52,11 @@ No source reference to these filenames was found during the repository audit. Re
 
 ## External results to attach
 
-- `[PLACEHOLDER: institution-approved document similarity tool]`
-- `[PLACEHOLDER: final document similarity percentage and report filename]`
-- `[PLACEHOLDER: institution-approved code similarity method or declaration]`
-- `[PLACEHOLDER: final code similarity result and report filename]`
-- `[PLACEHOLDER: supervisor's review of similarity findings]`
+- Complete report from the institution-approved document similarity tool
+- Final document similarity percentage and match details
+- Institution-approved code similarity report or written declaration that it is not required
+- Supervisor review and acceptance of legitimate similarity findings
 
 ## Sign-off rule
 
-Do not replace the placeholders with an estimated percentage. Attach the complete reports, explain legitimate matches, and obtain supervisor acceptance before signing the final report.
+Do not provide an estimated percentage. Attach the complete reports, explain legitimate matches, and obtain supervisor acceptance before signing the final report.

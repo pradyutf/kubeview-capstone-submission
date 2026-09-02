@@ -11,6 +11,7 @@ Markdown files are the working sources until content review is complete. Existin
 - [Project summary with UVP](final/KubeView_Project_Summary.md)
 - [User manual and installation guide](final/README.md)
 - [BITS final presentation](final/KubeView_BITS_Final_Presentation.pptx)
+- [Compliance package](final/KubeView_Compliance_Package.md)
 
 ## Collaboration
 
@@ -34,6 +35,7 @@ Markdown files are the working sources until content review is complete. Existin
 - [x] Create system, live-update, context-isolation, history, and deployment diagrams
 - [x] Generate dependency and contribution inventories
 - [x] Run and retain the internal originality and provenance audit
+- [x] Create the final internal compliance and attribution package
 - [x] Draft the user manual and installation guide
 - [x] Combine and finalize the user manual and installation guide
 - [x] Produce the source-code ZIP and checksum
@@ -77,7 +79,7 @@ Counts above describe the source tree. They are not final pass results. The vali
 | Source code | Commit `8ee601c` | ZIP and SHA-256 file | Complete |
 | Source link | Repository URL | TXT | Complete; access decision pending |
 | Test and validation report | CI and local runs | PDF plus evidence archive | Drafted; local release checks pending |
-| Plagiarism compliance | `compliance/INTERNAL_ORIGINALITY_AUDIT.md`, attribution and dependency inventories, external reports | PDF | Internal audit complete; approved external reports pending |
+| Plagiarism compliance | `final/KubeView_Compliance_Package.md` plus external reports | Markdown or PDF with external reports attached | Internal package complete; institutional similarity reports remain external |
 | User manual and installation guide | `final/README.md` | README or PDF | Final combined Markdown complete |
 | Presentation | `final/KubeView_BITS_Final_Presentation.pptx` | PPTX | Complete; demo video can be embedded or linked later |
 | Demo video | Recorded demonstration | Hosted video and TXT link | Recording complete; upload and final link pending |
